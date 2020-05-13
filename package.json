@@ -1,0 +1,14 @@
+{
+  "name": "tic_tac_toe_backend",
+  "version": "1.0.0",
+  "description": "\"this is the backend for tic_tac_toe online game\"",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "deerajn04@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
