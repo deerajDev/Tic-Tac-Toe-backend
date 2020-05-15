@@ -4,11 +4,14 @@
   "description": "\"this is the backend for tic_tac_toe online game\"",
   "main": "sever.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon ./src/server.js"
   },
   "author": "deerajn04@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "websocket": "^1.0.31"
   }
 }
