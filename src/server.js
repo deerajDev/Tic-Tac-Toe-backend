@@ -4,11 +4,14 @@ const WebSocket = require("websocket").server;
 const Game = require("./Game");
 
 //active games
-const activeGames = { 2222: { gameId: 2222, testing: "hai" } };
+const activeGames = {};
 const httpServer = http.createServer((req, res) => {
   const game_id = parseInt(req.url.split("/")[1]);
   if (game_id && game_id in activeGames) {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(200, {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    });
     res.write(JSON.stringify({ valid: true }));
     res.end();
   } else {
@@ -46,7 +49,8 @@ wsServer.on("request", (req) => {
         connection.send(JSON.stringify({ error: e }));
       }
     } else if (data["action"] === "update") {
-      activeGames[2222].update(data);
+      const gameID = data["game_id"];
+      activeGames[gameID].update(data);
     }
   });
 });

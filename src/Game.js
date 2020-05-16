@@ -8,9 +8,8 @@ class Game {
   }
   //creates 5 digits random id
   generateGameID() {
-    // const uniqueId = Math.random() * 90000 + 10000;
-    // return parseInt(uniqueId);
-    return 2222;
+    const uniqueId = Math.random() * 90000 + 10000;
+    return parseInt(uniqueId);
   }
 
   //creates initialState  matrix with all undefined
@@ -156,16 +155,16 @@ class Game {
 
     if (won) {
       this.won = true;
-      this.reset();
     }
   }
 
   checkGameStatus(user_id) {
     if (this.won) {
-      
       // send the message to the players that user has won
       this.sendTo(user_id, { action: "you_won" });
       this.sendTo((user_id + 1) % 2, { action: "you_lost" });
+      this.reset();
+      this.won = false;
     } else if (this.__num_moves >= 9) {
       //send message to the user that game has finished
       this.sendAll({ action: "draw" });
@@ -190,6 +189,7 @@ class Game {
 
   reset() {
     this.__game_status = this.createInitialState();
+    this.__num_moves = 0;
   }
 }
 
